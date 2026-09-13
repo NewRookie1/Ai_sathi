@@ -41,6 +41,9 @@ android/.gradle/
 android/local.properties
 .widget_preview/
 
+# ---- Never stage nested git internals if repos are briefly renamed ----
+.git.keep/
+
 # ---- IDE / OS ----
 .idea/
 .vscode/

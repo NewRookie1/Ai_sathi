@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: artisan-ai-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    # Single uvicorn worker: fits the free-tier 512MB RAM and avoids
+    # SQLite write-lock contention when DATABASE_URL is not configured.
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: AI_PROVIDER
+        value: "groq"
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: "openai/gpt-oss-120b"
+      - key: GROQ_TEXT_MODELS
+        value: "openai/gpt-oss-120b,openai/gpt-oss-20b,llama-3.1-8b-instant"
+      - key: GROQ_VISION_MODEL
+        value: "meta-llama/llama-4-scout-17b-16e-instruct"
+      - key: GROQ_VISION_MODELS
+        value: "meta-llama/llama-4-scout-17b-16e-instruct,qwen/qwen3.6-27b,qwen/qwen3.8-27b"
+      - key: GROQ_STT_MODEL
+        value: "whisper-large-v3"
+      - key: GROQ_API_BASE
+        value: "https://api.groq.com/openai/v1"
+      - key: CORS_ORIGINS
+        value: '["*"]'
