@@ -1,0 +1,50 @@
+# ---- Secrets: NEVER commit these (real keys, tokens, wallets) ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.jks
+*.keystore
+secrets.json
+serviceAccount*.json
+
+# ---- Databases (local dev data) ----
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.egg-info/
+dist/
+*.log
+
+# ---- Flutter / Dart ----
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+coverage/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+/android/app/debug
+/android/app/profile
+/android/app/release
+.ios/
+ios/Pods/
+android/.gradle/
+android/local.properties
+.widget_preview/
+
+# ---- IDE / OS ----
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+.history
